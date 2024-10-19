@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import * as PIXI from "pixi.js"; // Import the entire PixiJS library
+import * as PIXI from "pixi.js";
 
 const SolarSystem: React.FC = () => {
   // Create a ref to store a reference to a <div> in the DOM where the Pixi canvas will be added
@@ -17,14 +17,16 @@ const SolarSystem: React.FC = () => {
       // Call the new async `init` method to initialize the PixiJS application
       // Set up the canvas width, height, and background color
       await app.init({
-        width: 640,
-        height: 360,
+        width: 1000,
+        height: 600,
         backgroundColor: 0x1099bb,
       });
 
       // Once initialized, append the canvas to the `div` element referenced by `pixiContainerRef`
       // `app.canvas` is the actual <canvas> element created by PixiJS that handles the rendering
-      pixiContainerRef.current!.appendChild(app.canvas);
+      if (pixiContainerRef.current) {
+        pixiContainerRef.current!.appendChild(app.canvas);
+      }
     };
 
     // Call the asynchronous initialization function to start the PixiJS setup
