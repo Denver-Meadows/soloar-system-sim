@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import * as PIXI from "pixi.js";
+import { Game } from "./Game";
 
 const SolarSystem: React.FC = () => {
   // Create a ref to store a reference to a <div> in the DOM where the Pixi canvas will be added
   const pixiContainerRef = useRef<HTMLDivElement>(null);
+  const gameRef = useRef<Game | null>(null); // Ref to store the Game instance
 
   // useEffect will run after the component has been mounted in the DOM
   // It is used here to initialize and clean up the PixiJS application
@@ -29,11 +31,20 @@ const SolarSystem: React.FC = () => {
       }
     };
 
+    // Initialize the Game instance, passing the PixiJS app to it
+    // TODO: DEBUG WHY COMMENTING THIS OUT RENDERS THE APP???
+    // gameRef.current = new Game(app);
+
     // Call the asynchronous initialization function to start the PixiJS setup
     initializePixi();
 
     // Return a cleanup function that runs when the component is unmounted (removed from the DOM)
     return () => {
+      // Clean up the Game instance
+      if (gameRef.current) {
+        gameRef.current.destroy();
+      }
+
       // This function destroys the PixiJS application, freeing up memory and resources
       // `true` ensures that Pixi removes all children (graphics, sprites) and textures from memory
       app.destroy(true, { children: true, texture: true });

@@ -1,4 +1,6 @@
-class Entity {
+// Entities are the objects in your simulation, such as the sun, planets, and even moons.
+// In an ECS system, entities themselves don’t hold any logic; they are just identifiers.
+export class Entity {
   id: number;
   // A Map that holds the components attached to the entity.
   // The Map key is a string representing the component name,
@@ -19,5 +21,3 @@ class Entity {
     return this.components.get(name);
   }
 }
-
-export default Entity;

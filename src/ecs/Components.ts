@@ -6,14 +6,19 @@ export class Position {
 
 export class Orbit {
   constructor(
-    public centerX: number,
+    public centerX: number, // Center of the orbit (typically sun's position)
     public centerY: number,
-    public radius: number,
-    public angularSpeed: number,
-    public angle: number = 0
+    public radius: number, // Distance from the sun
+    public angularSpeed: number, // Current position in orbit
+    public angle: number = 0 // How fast it moves in orbit
   ) {}
 }
 
 export class Visual {
   constructor(public grapic: PIXI.Graphics) {}
 }
+
+// TODO: implement the following components
+// Size: for planets/sun to define their radius
+// Rotation: for planets/sun to rotate around their own axis
+// Rotation System: If planets have their own spin, this system could update the angle of rotation.

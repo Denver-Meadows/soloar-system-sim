@@ -1,5 +1,8 @@
-import Entity from "../Entity";
+import { Entity } from "../Entity";
 
+// Responsible for moving entities (planets, moons) along their orbital paths.
+// This system would access the Position and Orbit Component of entities
+// to update their position based on the current angle.
 export class OrbitSystem {
   update(entities: Entity[], delta: number) {
     entities.forEach((entity) => {
