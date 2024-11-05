@@ -27,13 +27,11 @@ const SolarSystem: React.FC = () => {
       // Once initialized, append the canvas to the `div` element referenced by `pixiContainerRef`
       // `app.canvas` is the actual <canvas> element created by PixiJS that handles the rendering
       if (pixiContainerRef.current) {
-        pixiContainerRef.current!.appendChild(app.canvas);
+        pixiContainerRef.current.appendChild(app.canvas);
       }
+      // Initialize the Game instance, passing the PixiJS app to it
+      gameRef.current = new Game(app);
     };
-
-    // Initialize the Game instance, passing the PixiJS app to it
-    // TODO: DEBUG WHY COMMENTING THIS OUT RENDERS THE APP???
-    // gameRef.current = new Game(app);
 
     // Call the asynchronous initialization function to start the PixiJS setup
     initializePixi();

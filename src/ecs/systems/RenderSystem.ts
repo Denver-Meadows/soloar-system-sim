@@ -8,9 +8,13 @@ export class RenderSystem {
       const position = entity.getComponent("Position");
       const visual = entity.getComponent("Visual");
 
-      // update pixi graphics position
-      visual.graphic.x = position.x;
-      visual.graphic.y = position.y;
+      // Check if the components exist.  Eventually we may write
+      // queries that query for these components.
+      if (position && visual) {
+        // update pixi graphics position
+        visual.graphic.x = position.x;
+        visual.graphic.y = position.y;
+      }
     });
   }
 }
