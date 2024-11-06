@@ -22,6 +22,10 @@ export class Visual {
   }
 }
 
+export class Size {
+  constructor(public radius: number) {}
+}
+
 // TODO: implement the following components
 // Size: for planets/sun to define their radius
 // Rotation: for planets/sun to rotate around their own axis

@@ -1,6 +1,6 @@
 import { Entity } from "./Entity";
 import * as PIXI from "pixi.js";
-import { Orbit, Position, Visual } from "./Components";
+import { Orbit, Position, Size, Visual } from "./Components";
 import { COMPONENTS } from "../constants";
 
 export function createSun(): Entity {
@@ -20,11 +20,12 @@ export function createPlanet(
   centerY: number,
   radius: number,
   angularSpeed: number,
-  color: string
+  color: string,
+  size: number
 ): Entity {
   const planet = new Entity();
   const planetGraphic = new PIXI.Graphics();
-  planetGraphic.circle(25, 25, 5).fill(color);
+  planetGraphic.circle(25, 25, size).fill(color);
   console.log("planet", planetGraphic);
 
   planet.addComponent(COMPONENTS.POSITION, new Position(100, 200));
@@ -33,6 +34,7 @@ export function createPlanet(
     COMPONENTS.ORBIT,
     new Orbit(centerX, centerY, radius, angularSpeed)
   );
+  planet.addComponent(COMPONENTS.SIZE, new Size(size));
 
   return planet;
 }
