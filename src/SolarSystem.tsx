@@ -19,8 +19,8 @@ const SolarSystem: React.FC = () => {
       // Call the new async `init` method to initialize the PixiJS application
       // Set up the canvas width, height, and background color
       await app.init({
-        width: 1000,
-        height: 600,
+        width: 2530,
+        height: 1200,
         backgroundColor: "0D1B2A",
       });
 

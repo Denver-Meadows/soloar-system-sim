@@ -55,8 +55,29 @@ export class Game {
     const sun = createSun();
     this.addEntity(sun);
 
-    const earth = createPlanet(500, 300, 150, 0.01);
+    const mercury = createPlanet(1265, 600, 90, 0.024, "8D9093");
+    this.addEntity(mercury);
+
+    const venus = createPlanet(1265, 600, 130, 0.016, "D9BF77");
+    this.addEntity(venus);
+
+    const earth = createPlanet(1265, 600, 160, 0.01, "#1E90FF");
     this.addEntity(earth);
+
+    const mars = createPlanet(1265, 600, 210, 0.008, "#B22222");
+    this.addEntity(mars);
+
+    const jupiter = createPlanet(1265, 600, 320, 0.004, "#D19A66");
+    this.addEntity(jupiter);
+
+    const saturn = createPlanet(1265, 600, 400, 0.003, "#D2B48C");
+    this.addEntity(saturn);
+
+    const uranus = createPlanet(1265, 600, 480, 0.002, "#AFDBF5");
+    this.addEntity(uranus);
+
+    const neptune = createPlanet(1265, 600, 560, 0.0015, "#2E3A8C");
+    this.addEntity(neptune);
 
     // Add each visual graphic to the stage
     // If I decide to add or remove entities dynamically at runtime,
