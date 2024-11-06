@@ -15,7 +15,11 @@ export class Orbit {
 }
 
 export class Visual {
-  constructor(public grapic: PIXI.Graphics) {}
+  public graphic: PIXI.Graphics;
+
+  constructor(graphic: PIXI.Graphics) {
+    this.graphic = graphic;
+  }
 }
 
 // TODO: implement the following components

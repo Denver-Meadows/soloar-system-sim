@@ -1,3 +1,4 @@
+import { COMPONENTS } from "../../constants";
 import { Entity } from "../Entity";
 
 // Responsible for moving entities (planets, moons) along their orbital paths.
@@ -6,8 +7,8 @@ import { Entity } from "../Entity";
 export class OrbitSystem {
   update(entities: Entity[], delta: number) {
     entities.forEach((entity) => {
-      const orbit = entity.getComponent("Orbit");
-      const position = entity.getComponent("Position");
+      const orbit = entity.getComponent(COMPONENTS.ORBIT);
+      const position = entity.getComponent(COMPONENTS.POSITION);
 
       // Check if the components exist.  Eventually we may write
       // queries that query for these components.

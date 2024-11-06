@@ -1,14 +1,16 @@
+import { v4 as uuid } from "uuid";
+
 // Entities are the objects in your simulation, such as the sun, planets, and even moons.
 // In an ECS system, entities themselves don’t hold any logic; they are just identifiers.
 export class Entity {
-  id: number;
+  id: string;
   // A Map that holds the components attached to the entity.
   // The Map key is a string representing the component name,
   // and the value is the actual component data (could be of any type).
   components: Map<string, any> = new Map();
 
-  constructor(id: number) {
-    this.id = id;
+  constructor() {
+    this.id = uuid();
   }
 
   // Adds the component to the components Map

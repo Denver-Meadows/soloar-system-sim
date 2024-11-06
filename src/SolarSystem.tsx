@@ -21,7 +21,7 @@ const SolarSystem: React.FC = () => {
       await app.init({
         width: 1000,
         height: 600,
-        backgroundColor: 0x1099bb,
+        backgroundColor: "0D1B2A",
       });
 
       // Once initialized, append the canvas to the `div` element referenced by `pixiContainerRef`

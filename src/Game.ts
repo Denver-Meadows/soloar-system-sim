@@ -1,5 +1,7 @@
 import * as PIXI from "pixi.js";
+import { COMPONENTS } from "./constants";
 import { Entity } from "./ecs/Entity";
+import { createPlanet, createSun } from "./ecs/Factories";
 import { OrbitSystem } from "./ecs/systems/OrbitSystem";
 import { RenderSystem } from "./ecs/systems/RenderSystem";
 
@@ -26,6 +28,9 @@ export class Game {
     // Main Loop:  Attach the update method to the PixiJS application's ticker
     // This will invoke the update method on every frame automatically
     this.app.ticker.add(this.update.bind(this));
+
+    // init the entities
+    this.initializeEntities();
   }
 
   // Add new entities to the game
@@ -43,6 +48,25 @@ export class Game {
     // Update systems with the current list of entities and deltaTime.
     this.orbitSystem.update(this.entities, deltaTime);
     this.renderSystem.update(this.entities);
+  }
+
+  // Init the entities.  For now its just the sun and earth
+  initializeEntities() {
+    const sun = createSun();
+    this.addEntity(sun);
+
+    const earth = createPlanet(500, 300, 150, 0.01);
+    this.addEntity(earth);
+
+    // Add each visual graphic to the stage
+    // If I decide to add or remove entities dynamically at runtime,
+    // move this to the Render System.
+    this.entities.forEach((entity) => {
+      const visual = entity.getComponent(COMPONENTS.VISUAL);
+      if (visual && !this.app.stage.children.includes(visual.graphic)) {
+        this.app.stage.addChild(visual.graphic);
+      }
+    });
   }
 
   destroy() {

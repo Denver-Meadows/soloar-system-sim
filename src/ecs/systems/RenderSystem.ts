@@ -1,3 +1,4 @@
+import { COMPONENTS } from "../../constants";
 import { Entity } from "../Entity";
 
 // Updates the Visual Component to reflect changes in position,
@@ -5,8 +6,8 @@ import { Entity } from "../Entity";
 export class RenderSystem {
   update(entities: Entity[]) {
     entities.forEach((entity) => {
-      const position = entity.getComponent("Position");
-      const visual = entity.getComponent("Visual");
+      const position = entity.getComponent(COMPONENTS.POSITION);
+      const visual = entity.getComponent(COMPONENTS.VISUAL);
 
       // Check if the components exist.  Eventually we may write
       // queries that query for these components.
